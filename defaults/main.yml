@@ -1,0 +1,13 @@
+################################################################################
+#
+# Default values for credentials role
+#
+
+euca_admin_zip_path: /var/tmp/
+euca_admin_zip_file: admin.zip
+
+euca_admin_creds_path: /var/tmp/creds/
+euca_admin_creds_file: eucarc
+
+user: admin
+account: eucalyptus

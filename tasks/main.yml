@@ -1,0 +1,28 @@
+###########################################################
+#
+# This role can be called anytime to repeat creds download
+#
+
+- name: Get the credentials ZIP file
+  shell: rm -rfv "{{ euca_admin_zip }}" ;
+         euca-get-credentials "{{ euca_admin_zip }}" -u "{{ user }}" -a "{{ account }}"
+  tags:
+  - euca_creds
+
+- name: Creates the creds target directory
+  shell: mkdir -p "{{ euca_admin_creds_path }}"
+  tags:
+  - euca_creds
+  ignore_errors: yes
+
+- name: Unzip the credentials
+  unarchive: copy=no src="{{ euca_admin_zip_file }}"
+             dest="{{ euca_admin_creds_path }}" creates=yes
+  tags:
+  - euca_creds
+
+- name: Check all services
+  shell: source "{{ euca_admin_creds }}"; euca-describe-services
+  tags:
+  - euca_creds
+  ignore_errors: yes

@@ -1,0 +1,8 @@
+################################################################################
+#
+# Variables for credentials role
+#
+
+euca_admin_zip: "{{ euca_admin_zip_path }}{{ euca_admin_zip_file }}"
+euca_admin_creds: "{{ euca_admin_creds_path}}{{ euca_admin_creds_file }}"
+
