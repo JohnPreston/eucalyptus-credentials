@@ -15,9 +15,11 @@
   - euca_creds
   ignore_errors: yes
 
+- name: Debug
+  debug: msg="{{ euca_admin_zip }}"
+
 - name: Unzip the credentials
-  unarchive: copy=no src="{{ euca_admin_zip_file }}"
-             dest="{{ euca_admin_creds_path }}" creates=yes
+  unarchive: copy=no src="{{ euca_admin_zip }}" dest="{{ euca_admin_creds_path }}" creates=yes
   tags:
   - euca_creds
 
